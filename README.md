@@ -2,7 +2,7 @@
 
 Projeto da disciplina Programação para Internet (UENP). Uma API em Django para cadastrar os personagens de uma mesa de RPG, e uma página web que consome essa API com `fetch`.
 
-Cada personagem tem: `nome`, `classe`, `nivel`, `pontos_vida` e `vivo`.
+Cada personagem tem: `nome`, `classe`, `nível`, `pontos_vida` e status `vivo`.
 
 ## Como rodar
 
@@ -17,7 +17,7 @@ Requisito: Python 3.12 ou mais novo (testado com Python 3.13 e Django 6.1).
 
 Depois acesse http://127.0.0.1:8000/ (página) ou http://127.0.0.1:8000/api/personagens/ (API).
 
-Observação: se o PowerShell bloquear o `venv\Scripts\activate`, rode antes `Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass` (vale só para aquele terminal).
+Observação: se o PowerShell bloquear o `venv\Scripts\activate`, rode antes `Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass`.
 
 ## Estrutura do projeto
 
