@@ -54,11 +54,11 @@ Os registros de teste (4 personagens e o usuário admin) estão no arquivo `dado
 
 | Método | URL                        | Descrição                  | Respostas     |
 |--------|----------------------------|----------------------------|---------------|
-| GET    | /api/personagens/          | Lista os personagens       | 200           |
-| POST   | /api/personagens/          | Cadastra um personagem     | 201, 400      |
-| GET    | /api/personagens/<id>/     | Busca um personagem        | 200, 404      |
-| PUT    | /api/personagens/<id>/     | Altera um personagem       | 200, 400, 404 |
-| DELETE | /api/personagens/<id>/     | Exclui um personagem       | 204, 404      |
+| GET    | `/api/personagens/`          | Lista os personagens       | 200           |
+| POST   | `/api/personagens/`          | Cadastra um personagem     | 201, 400      |
+| GET    | `/api/personagens/<id>/`     | Busca um personagem        | 200, 404      |
+| PUT    | `/api/personagens/<id>/`     | Altera um personagem       | 200, 400, 404 |
+| DELETE | `/api/personagens/<id>/`     | Exclui um personagem       | 204, 404      |
 
 Exemplo de corpo para o POST (`nome`, `classe`, `nivel` e `pontos_vida` são obrigatórios; `nivel` e `pontos_vida` devem ser inteiros):
 
