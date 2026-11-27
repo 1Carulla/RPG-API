@@ -1,0 +1,64 @@
+[
+  {
+    "model": "auth.user",
+    "pk": 1,
+    "fields": {
+      "password": "pbkdf2_sha256$1000000$rpgsalt2026Xk9$Lzbo54g4aN7z1lvNmtphqG1bsg+jyQXByj3ejCv7q6U=",
+      "last_login": null,
+      "is_superuser": true,
+      "username": "admin",
+      "first_name": "",
+      "last_name": "",
+      "email": "",
+      "is_staff": true,
+      "is_active": true,
+      "date_joined": "2026-11-27T12:00:00Z",
+      "groups": [],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "personagens.personagem",
+    "pk": 1,
+    "fields": {
+      "nome": "Aragorn Pedra-Negra",
+      "classe": "Guerreiro",
+      "nivel": 5,
+      "pontos_vida": 52,
+      "vivo": true
+    }
+  },
+  {
+    "model": "personagens.personagem",
+    "pk": 2,
+    "fields": {
+      "nome": "Elara Luzprata",
+      "classe": "Maga",
+      "nivel": 4,
+      "pontos_vida": 24,
+      "vivo": true
+    }
+  },
+  {
+    "model": "personagens.personagem",
+    "pk": 3,
+    "fields": {
+      "nome": "Thorin Barbaférrea",
+      "classe": "Clérigo",
+      "nivel": 3,
+      "pontos_vida": 0,
+      "vivo": false
+    }
+  },
+  {
+    "model": "personagens.personagem",
+    "pk": 4,
+    "fields": {
+      "nome": "Sombra",
+      "classe": "Ladino",
+      "nivel": 6,
+      "pontos_vida": 38,
+      "vivo": true
+    }
+  }
+]
