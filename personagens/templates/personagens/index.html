@@ -1,126 +1,79 @@
-<!DOCTYPE html>
+{% load static %}<!DOCTYPE html>
 <html lang="pt-br">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Ficha de Personagens - RPG de Mesa</title>
-  <style>
-    body {
-      font-family: Georgia, serif;
-      max-width: 760px;
-      margin: 30px auto;
-      padding: 0 12px;
-      background: #f4ecd8;
-      color: #2b1d0e;
-    }
-    h1 { color: #5c1a1a; }
-    input { padding: 6px; margin: 4px 0; }
-    li { margin: 10px 0; }
-    button { margin-left: 6px; cursor: pointer; }
-    .morto { color: gray; text-decoration: line-through; }
-    #mensagem { color: darkred; font-weight: bold; }
-  </style>
+  <title>Taverna do Dragão Dourado - RPG de Mesa</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;800&family=Crimson+Text:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{% static 'personagens/estilo.css' %}">
 </head>
-<body>
-  <h1>Ficha de Personagens</h1>
+<body data-mestre="{{ mestre|yesno:'1,0' }}">
+  <header class="placa">
+    <div class="marca">
+      <span class="brasao" aria-hidden="true">⚔</span>
+      <div>
+        <h1>Taverna do Dragão Dourado</h1>
+        <p class="subtitulo">Livro de registros dos aventureiros</p>
+      </div>
+    </div>
+    <div class="acesso">
+      {% if mestre %}
+        <span class="selo selo-mestre">👑 Mestre: {{ request.user.username }}</span>
+        <form method="post" action="/admin/logout/">
+          {% csrf_token %}
+          <input type="hidden" name="next" value="/">
+          <button type="submit" class="btn btn-fantasma">Sair</button>
+        </form>
+      {% else %}
+        <span class="selo">🎲 Acesso de jogador</span>
+        <a class="btn btn-fantasma" href="/admin/login/?next=/">Entrar como mestre</a>
+      {% endif %}
+    </div>
+  </header>
 
-  <h2>Novo personagem</h2>
-  <form id="formulario">
-    <input type="text" id="nome" placeholder="Nome">
-    <input type="text" id="classe" placeholder="Classe (Mago, Guerreiro...)">
-    <input type="number" id="nivel" placeholder="Nível">
-    <input type="number" id="pontos_vida" placeholder="Pontos de vida">
-    <button type="submit">Cadastrar</button>
-  </form>
-  <p id="mensagem"></p>
+  <main>
+    <section class="pergaminho">
+      <h2>Campanhas</h2>
+      <nav id="abas" class="abas" aria-label="Filtrar por campanha"></nav>
+      <p id="info-campanha" class="info-campanha"></p>
+      <form id="form-campanha" class="linha-form">
+        <input type="text" id="campanha-nome" placeholder="Nome da nova campanha">
+        <input type="text" id="campanha-descricao" placeholder="Descrição (opcional)">
+        <button type="submit" class="btn">Criar campanha</button>
+      </form>
+      <p id="mensagem-campanha" class="mensagem"></p>
+    </section>
 
-  <h2>Grupo de aventureiros</h2>
-  <ul id="lista"></ul>
+    <section class="pergaminho">
+      <h2>Recrutar aventureiro</h2>
+      <form id="formulario" class="grade-form">
+        <label>Nome <input type="text" id="nome" placeholder="Ex.: Elara Luzprata"></label>
+        <label>Classe <input type="text" id="classe" placeholder="Mago, Guerreiro..."></label>
+        <label>Nível <input type="number" id="nivel" min="1" step="1" placeholder="Ex.: 1"></label>
+        <label>PV máximos <input type="number" id="pontos_vida_max" min="1" step="1" placeholder="Ex.: 12"></label>
+        <label>Campanha <select id="campanha"></select></label>
+        <button type="submit" class="btn btn-ouro">Recrutar</button>
+      </form>
+      <p id="mensagem" class="mensagem"></p>
+    </section>
 
-  <script>
-    const API = "/api/personagens/";
-    const lista = document.getElementById("lista");
-    const formulario = document.getElementById("formulario");
-    const mensagem = document.getElementById("mensagem");
+    <section>
+      <div class="barra-grupo">
+        <h2 class="titulo-claro">Grupo de aventureiros <span id="contagem" class="contagem"></span></h2>
+        <div class="controles-combate">
+          <button type="button" id="botao-combate" class="btn">⚔ Ordenar por iniciativa</button>
+          <button type="button" id="botao-encerrar" class="btn btn-fantasma-claro">Encerrar combate</button>
+        </div>
+      </div>
+      <p id="dica-combate" class="dica"></p>
+      <div id="lista" class="grade-fichas"></div>
+    </section>
+  </main>
 
-    async function carregarPersonagens() {
-      const resposta = await fetch(API);
-      const dados = await resposta.json();
+  <div id="aviso" class="aviso" role="status" aria-live="polite"></div>
 
-      lista.innerHTML = "";
-      for (const p of dados.personagens) {
-        const item = document.createElement("li");
-        item.textContent = p.nome + " - " + p.classe + " (nível " + p.nivel
-          + ", " + p.pontos_vida + " PV)";
-        if (!p.vivo) {
-          item.textContent += " [caído]";
-          item.className = "morto";
-        }
-
-        const botaoVida = document.createElement("button");
-        botaoVida.textContent = p.vivo ? "Derrotar" : "Reviver";
-        botaoVida.onclick = () => alterar(p.id, { vivo: !p.vivo });
-
-        const botaoNivel = document.createElement("button");
-        botaoNivel.textContent = "Subir de nível";
-        botaoNivel.onclick = () => alterar(p.id, { nivel: p.nivel + 1 });
-
-        const botaoExcluir = document.createElement("button");
-        botaoExcluir.textContent = "Excluir";
-        botaoExcluir.onclick = () => excluirPersonagem(p.id);
-
-        item.append(botaoVida, botaoNivel, botaoExcluir);
-        lista.appendChild(item);
-      }
-    }
-
-    formulario.addEventListener("submit", async (evento) => {
-      evento.preventDefault();
-
-      // Campos de número vazios viram null, para a API responder com o erro
-      const nivel = document.getElementById("nivel").value;
-      const pv = document.getElementById("pontos_vida").value;
-      const novo = {
-        nome: document.getElementById("nome").value,
-        classe: document.getElementById("classe").value,
-        nivel: nivel === "" ? null : Number(nivel),
-        pontos_vida: pv === "" ? null : Number(pv),
-      };
-
-      const resposta = await fetch(API, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(novo),
-      });
-
-      if (resposta.status === 201) {
-        mensagem.textContent = "";
-        formulario.reset();
-        carregarPersonagens();
-      } else {
-        const dados = await resposta.json();
-        mensagem.textContent = dados.erro;
-      }
-    });
-
-    async function alterar(id, campos) {
-      await fetch(API + id + "/", {
-        method: "PUT",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(campos),
-      });
-      carregarPersonagens();
-    }
-
-    async function excluirPersonagem(id) {
-      if (!confirm("Excluir este personagem?")) {
-        return;
-      }
-      await fetch(API + id + "/", { method: "DELETE" });
-      carregarPersonagens();
-    }
-
-    carregarPersonagens();
-  </script>
+  <script src="{% static 'personagens/app.js' %}"></script>
 </body>
 </html>

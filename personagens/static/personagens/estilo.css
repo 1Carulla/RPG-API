@@ -1,0 +1,321 @@
+/* Tema: taverna medieval (madeira escura, pergaminho e ouro) */
+:root {
+  --madeira-escura: #1f140c;
+  --madeira: #3b2616;
+  --madeira-clara: #5a3a22;
+  --pergaminho: #f1e2c0;
+  --pergaminho-escuro: #e0c99a;
+  --tinta: #2b1a0e;
+  --tinta-suave: #6b4f36;
+  --ouro: #d4a237;
+  --ouro-claro: #f0cf74;
+  --vinho: #7a1f1f;
+  --vinho-claro: #a33232;
+  --verde: #3f7a3a;
+  --sombra: 0 6px 18px rgba(0, 0, 0, .45);
+  --fonte-titulo: "Cinzel", "Georgia", serif;
+  --fonte-texto: "Crimson Text", "Georgia", serif;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: var(--fonte-texto);
+  font-size: 18px;
+  color: var(--tinta);
+  /* Tábuas de madeira feitas só com gradientes */
+  background-color: var(--madeira);
+  background-image:
+    radial-gradient(ellipse at top, rgba(240, 180, 80, .18), transparent 60%),
+    repeating-linear-gradient(90deg,
+      rgba(0, 0, 0, .25) 0 2px, transparent 2px 120px),
+    repeating-linear-gradient(0deg,
+      var(--madeira) 0 6px, #352215 6px 9px, var(--madeira) 9px 22px);
+  background-attachment: fixed;
+}
+
+main {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 16px 60px;
+}
+
+h1, h2, h3 { font-family: var(--fonte-titulo); margin: 0; }
+h2 { font-size: 1.35rem; color: var(--vinho); margin-bottom: 12px; letter-spacing: .5px; }
+
+/* ---------- Cabeçalho (placa da taverna) ---------- */
+.placa {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 1100px;
+  margin: 24px auto;
+  padding: 18px 24px;
+  border: 3px solid var(--ouro);
+  border-radius: 12px;
+  background: linear-gradient(180deg, #4a2f1b, #2a1a0e);
+  box-shadow: var(--sombra), inset 0 0 0 4px #2a1a0e, inset 0 0 0 5px rgba(212, 162, 55, .5);
+  color: var(--pergaminho);
+  width: calc(100% - 32px);
+}
+.marca { display: flex; align-items: center; gap: 14px; }
+.brasao {
+  display: grid; place-items: center;
+  width: 54px; height: 54px;
+  font-size: 28px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 30%, var(--ouro-claro), var(--ouro) 55%, #8a6418);
+  color: var(--madeira-escura);
+  box-shadow: 0 0 18px rgba(240, 207, 116, .45);
+}
+.placa h1 {
+  font-size: clamp(1.3rem, 3.5vw, 2rem);
+  font-weight: 800;
+  color: var(--ouro-claro);
+  text-shadow: 0 2px 0 #000, 0 0 12px rgba(240, 180, 80, .35);
+}
+.subtitulo { margin: 2px 0 0; font-style: italic; color: var(--pergaminho-escuro); }
+.acesso { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+.acesso form { margin: 0; }
+.selo {
+  padding: 4px 12px;
+  border-radius: 999px;
+  border: 1px solid rgba(240, 207, 116, .5);
+  font-size: .95rem;
+}
+.selo-mestre { background: rgba(212, 162, 55, .2); color: var(--ouro-claro); }
+
+/* ---------- Pergaminhos (painéis) ---------- */
+.pergaminho {
+  position: relative;
+  margin-bottom: 22px;
+  padding: 20px 22px;
+  border-radius: 6px;
+  background:
+    radial-gradient(ellipse at center, transparent 55%, rgba(120, 80, 30, .25)),
+    linear-gradient(180deg, var(--pergaminho), var(--pergaminho-escuro));
+  box-shadow: var(--sombra);
+  border: 1px solid #b8955c;
+}
+
+/* ---------- Formulários ---------- */
+input, select {
+  font: inherit;
+  font-size: 1rem;
+  padding: 7px 10px;
+  border: 1px solid #a8844f;
+  border-radius: 6px;
+  background: #fbf3df;
+  color: var(--tinta);
+  min-width: 0;
+}
+input:focus, select:focus { outline: 2px solid var(--ouro); outline-offset: 1px; }
+
+.grade-form {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 12px;
+  align-items: end;
+}
+.grade-form label { display: flex; flex-direction: column; gap: 4px; font-weight: 600; color: var(--tinta-suave); }
+.linha-form { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 12px; }
+.linha-form input { flex: 1 1 200px; }
+
+.mensagem { min-height: 1.4em; margin: 10px 0 0; color: var(--vinho); font-weight: 600; }
+
+/* ---------- Botões ---------- */
+.btn {
+  font-family: var(--fonte-titulo);
+  font-size: .85rem;
+  font-weight: 600;
+  letter-spacing: .4px;
+  padding: 8px 14px;
+  border: 1px solid #4a1414;
+  border-radius: 6px;
+  color: #fbeed2;
+  background: linear-gradient(180deg, var(--vinho-claro), var(--vinho));
+  cursor: pointer;
+  box-shadow: 0 2px 0 #3b0e0e;
+  transition: transform .08s, filter .15s;
+  text-decoration: none;
+  display: inline-block;
+}
+.btn:hover { filter: brightness(1.12); }
+.btn:active { transform: translateY(1px); box-shadow: none; }
+.btn:disabled { opacity: .4; cursor: not-allowed; filter: none; }
+.btn-ouro {
+  color: var(--madeira-escura);
+  border-color: #7d5a12;
+  background: linear-gradient(180deg, var(--ouro-claro), var(--ouro));
+  box-shadow: 0 2px 0 #7d5a12;
+}
+.btn-fantasma {
+  background: transparent;
+  border-color: rgba(240, 207, 116, .6);
+  color: var(--ouro-claro);
+  box-shadow: none;
+}
+.btn-fantasma-claro {
+  background: rgba(0, 0, 0, .25);
+  border-color: rgba(240, 207, 116, .6);
+  color: var(--pergaminho);
+  box-shadow: none;
+}
+.btn-pequeno { padding: 4px 9px; font-size: .78rem; }
+.btn-icone {
+  width: 30px; height: 30px; padding: 0;
+  display: inline-grid; place-items: center;
+  font-size: 1rem;
+}
+.btn-perigo { background: linear-gradient(180deg, #5b5b5b, #333); border-color: #222; box-shadow: 0 2px 0 #111; }
+
+/* ---------- Abas de campanha ---------- */
+.abas { display: flex; flex-wrap: wrap; gap: 8px; }
+.aba {
+  font-family: var(--fonte-titulo);
+  font-size: .85rem;
+  padding: 7px 14px;
+  border-radius: 999px;
+  border: 1px solid #a8844f;
+  background: #fbf3df;
+  color: var(--tinta);
+  cursor: pointer;
+}
+.aba[aria-pressed="true"] {
+  background: var(--madeira);
+  color: var(--ouro-claro);
+  border-color: var(--madeira-escura);
+}
+.aba .numero { opacity: .7; margin-left: 4px; }
+.info-campanha { margin: 12px 0 0; font-style: italic; color: var(--tinta-suave); display: flex; gap: 10px; align-items: center; flex-wrap: wrap; }
+.info-campanha:empty { display: none; }
+
+/* ---------- Grupo ---------- */
+.barra-grupo {
+  display: flex; flex-wrap: wrap; gap: 12px;
+  align-items: center; justify-content: space-between;
+  margin: 8px 0 12px;
+}
+.titulo-claro { color: var(--ouro-claro); text-shadow: 0 2px 0 #000; margin: 0; }
+.contagem { font-size: .9rem; color: var(--pergaminho-escuro); }
+.controles-combate { display: flex; gap: 8px; flex-wrap: wrap; }
+.dica { color: var(--pergaminho-escuro); font-style: italic; margin: 0 0 12px; min-height: 1.2em; }
+
+.grade-fichas {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(290px, 1fr));
+  gap: 18px;
+}
+.vazio {
+  grid-column: 1 / -1;
+  text-align: center;
+  color: var(--pergaminho-escuro);
+  font-style: italic;
+  padding: 30px;
+  border: 2px dashed rgba(240, 207, 116, .35);
+  border-radius: 10px;
+}
+
+/* ---------- Ficha de personagem ---------- */
+.ficha {
+  position: relative;
+  display: flex; flex-direction: column; gap: 10px;
+  padding: 16px 16px 14px;
+  border-radius: 8px;
+  background: linear-gradient(180deg, var(--pergaminho), var(--pergaminho-escuro));
+  border: 1px solid #b8955c;
+  box-shadow: var(--sombra);
+  transition: transform .15s;
+}
+.ficha::before {
+  content: "";
+  position: absolute; inset: 5px;
+  border: 1px solid rgba(122, 31, 31, .25);
+  border-radius: 5px;
+  pointer-events: none;
+}
+.ficha.caido { filter: grayscale(.85); opacity: .8; }
+.ficha.caido h3 { text-decoration: line-through; }
+.ficha.da-vez { outline: 3px solid var(--ouro); box-shadow: 0 0 22px rgba(240, 207, 116, .55), var(--sombra); }
+
+.ficha-topo { display: flex; align-items: flex-start; gap: 10px; }
+.ficha-topo h3 { font-size: 1.1rem; color: var(--tinta); line-height: 1.2; flex: 1; word-break: break-word; }
+.nivel {
+  flex-shrink: 0;
+  font-family: var(--fonte-titulo);
+  font-size: .8rem;
+  padding: 3px 8px;
+  border-radius: 4px;
+  background: var(--madeira);
+  color: var(--ouro-claro);
+}
+.posicao {
+  flex-shrink: 0;
+  display: grid; place-items: center;
+  width: 28px; height: 28px;
+  border-radius: 50%;
+  font-family: var(--fonte-titulo);
+  font-size: .85rem;
+  background: var(--vinho);
+  color: #fbeed2;
+}
+.classe { margin: -4px 0 0; color: var(--tinta-suave); font-style: italic; }
+.estado { color: var(--vinho); font-weight: 600; font-style: normal; }
+
+/* Pontos de vida */
+.pv { display: flex; flex-direction: column; gap: 6px; }
+.barra-pv {
+  height: 12px;
+  border-radius: 6px;
+  background: #4a2f1b;
+  overflow: hidden;
+  border: 1px solid #2a1a0e;
+}
+.barra-pv div {
+  height: 100%;
+  background: linear-gradient(180deg, #6fbf5f, var(--verde));
+  transition: width .3s;
+}
+.barra-pv div.medio { background: linear-gradient(180deg, #e8c25a, #b8871c); }
+.barra-pv div.baixo { background: linear-gradient(180deg, #d9534f, var(--vinho)); }
+.linha-pv { display: flex; align-items: center; gap: 6px; flex-wrap: wrap; }
+.linha-pv .rotulo { font-family: var(--fonte-titulo); font-size: .85rem; color: var(--vinho); margin-right: 2px; }
+.linha-pv input { width: 62px; text-align: center; padding: 4px; }
+.barra { font-weight: 600; }
+
+.campos-extra { display: grid; grid-template-columns: 1fr 1.4fr; gap: 8px; }
+.campos-extra label { display: flex; flex-direction: column; gap: 2px; font-size: .9rem; color: var(--tinta-suave); font-weight: 600; }
+.campos-extra input, .campos-extra select { padding: 4px 6px; width: 100%; }
+
+.acoes { display: flex; flex-wrap: wrap; gap: 6px; align-items: center; }
+.acoes .espaco { flex: 1; }
+
+/* ---------- Aviso flutuante ---------- */
+.aviso {
+  position: fixed;
+  left: 50%; bottom: 24px;
+  transform: translate(-50%, 30px);
+  max-width: calc(100% - 32px);
+  padding: 12px 18px;
+  border-radius: 8px;
+  background: var(--madeira-escura);
+  color: var(--pergaminho);
+  border: 1px solid var(--ouro);
+  box-shadow: var(--sombra);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity .25s, transform .25s;
+}
+.aviso.visivel { opacity: 1; transform: translate(-50%, 0); }
+.aviso.erro { border-color: var(--vinho-claro); color: #ffd9d0; }
+
+@media (max-width: 520px) {
+  body { font-size: 17px; }
+  .placa { padding: 14px 16px; }
+  .brasao { width: 44px; height: 44px; font-size: 22px; }
+  .campos-extra { grid-template-columns: 1fr; }
+}

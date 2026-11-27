@@ -18,14 +18,34 @@
     }
   },
   {
+    "model": "personagens.campanha",
+    "pk": 1,
+    "fields": {
+      "nome": "A Mina Perdida",
+      "descricao": "Os aventureiros buscam a mina anã esquecida sob as Montanhas Cinzentas."
+    }
+  },
+  {
+    "model": "personagens.campanha",
+    "pk": 2,
+    "fields": {
+      "nome": "As Brumas de Valdoria",
+      "descricao": "Uma névoa amaldiçoada cobre o reino e só um grupo ousado pode dissipá-la."
+    }
+  },
+  {
     "model": "personagens.personagem",
     "pk": 1,
     "fields": {
       "nome": "Aragorn Pedra-Negra",
       "classe": "Guerreiro",
       "nivel": 5,
-      "pontos_vida": 52,
-      "vivo": true
+      "pontos_vida_atual": 40,
+      "pontos_vida_max": 52,
+      "vivo": true,
+      "iniciativa": null,
+      "ordem": 1,
+      "campanha": 1
     }
   },
   {
@@ -35,8 +55,12 @@
       "nome": "Elara Luzprata",
       "classe": "Maga",
       "nivel": 4,
-      "pontos_vida": 24,
-      "vivo": true
+      "pontos_vida_atual": 24,
+      "pontos_vida_max": 24,
+      "vivo": true,
+      "iniciativa": null,
+      "ordem": 2,
+      "campanha": 1
     }
   },
   {
@@ -46,8 +70,12 @@
       "nome": "Thorin Barbaférrea",
       "classe": "Clérigo",
       "nivel": 3,
-      "pontos_vida": 0,
-      "vivo": false
+      "pontos_vida_atual": 0,
+      "pontos_vida_max": 27,
+      "vivo": false,
+      "iniciativa": null,
+      "ordem": 3,
+      "campanha": 1
     }
   },
   {
@@ -57,8 +85,57 @@
       "nome": "Sombra",
       "classe": "Ladino",
       "nivel": 6,
-      "pontos_vida": 38,
-      "vivo": true
+      "pontos_vida_atual": 31,
+      "pontos_vida_max": 38,
+      "vivo": true,
+      "iniciativa": null,
+      "ordem": 4,
+      "campanha": 1
+    }
+  },
+  {
+    "model": "personagens.personagem",
+    "pk": 5,
+    "fields": {
+      "nome": "Lyra Ventoleve",
+      "classe": "Barda",
+      "nivel": 2,
+      "pontos_vida_atual": 15,
+      "pontos_vida_max": 17,
+      "vivo": true,
+      "iniciativa": null,
+      "ordem": 5,
+      "campanha": 2
+    }
+  },
+  {
+    "model": "personagens.personagem",
+    "pk": 6,
+    "fields": {
+      "nome": "Grom Quebra-Escudo",
+      "classe": "Bárbaro",
+      "nivel": 3,
+      "pontos_vida_atual": 35,
+      "pontos_vida_max": 35,
+      "vivo": true,
+      "iniciativa": null,
+      "ordem": 6,
+      "campanha": 2
+    }
+  },
+  {
+    "model": "personagens.personagem",
+    "pk": 7,
+    "fields": {
+      "nome": "Nim Faíscante",
+      "classe": "Feiticeiro",
+      "nivel": 2,
+      "pontos_vida_atual": 9,
+      "pontos_vida_max": 14,
+      "vivo": true,
+      "iniciativa": null,
+      "ordem": 7,
+      "campanha": 2
     }
   }
 ]
