@@ -37,8 +37,8 @@
     "model": "personagens.personagem",
     "pk": 1,
     "fields": {
-      "nome": "Aragorn Pedra-Negra",
-      "classe": "Guerreiro",
+      "nome": "Thafareal, O justo ",
+      "classe": "Paladino",
       "nivel": 5,
       "pontos_vida_atual": 40,
       "pontos_vida_max": 52,
