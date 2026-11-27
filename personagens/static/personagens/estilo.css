@@ -1,4 +1,4 @@
-/* Tema: taverna medieval (madeira escura, pergaminho e ouro) */
+/* Tema: Taverna Éther Neth (paisagem da Islândia, pergaminho e ouro) */
 :root {
   --madeira-escura: #1f140c;
   --madeira: #3b2616;
@@ -25,14 +25,13 @@ body {
   font-family: var(--fonte-texto);
   font-size: 18px;
   color: var(--tinta);
-  /* Tábuas de madeira feitas só com gradientes */
-  background-color: var(--madeira);
+  background-color: #0d2142;
+  /* Camada escura por cima da paisagem, para os textos continuarem legíveis */
   background-image:
-    radial-gradient(ellipse at top, rgba(240, 180, 80, .18), transparent 60%),
-    repeating-linear-gradient(90deg,
-      rgba(0, 0, 0, .25) 0 2px, transparent 2px 120px),
-    repeating-linear-gradient(0deg,
-      var(--madeira) 0 6px, #352215 6px 9px, var(--madeira) 9px 22px);
+    linear-gradient(rgba(5, 10, 31, .25), rgba(5, 10, 31, .55)),
+    url("fundo.svg");
+  background-size: cover;
+  background-position: center bottom;
   background-attachment: fixed;
 }
 
@@ -56,7 +55,7 @@ h2 { font-size: 1.35rem; color: var(--vinho); margin-bottom: 12px; letter-spacin
   margin: 24px auto;
   padding: 18px 24px;
   border: 3px solid var(--ouro);
-  border-radius: 12px;
+  border-radius: 24px;
   background: linear-gradient(180deg, #4a2f1b, #2a1a0e);
   box-shadow: var(--sombra), inset 0 0 0 4px #2a1a0e, inset 0 0 0 5px rgba(212, 162, 55, .5);
   color: var(--pergaminho);
@@ -94,7 +93,7 @@ h2 { font-size: 1.35rem; color: var(--vinho); margin-bottom: 12px; letter-spacin
   position: relative;
   margin-bottom: 22px;
   padding: 20px 22px;
-  border-radius: 6px;
+  border-radius: 20px;
   background:
     radial-gradient(ellipse at center, transparent 55%, rgba(120, 80, 30, .25)),
     linear-gradient(180deg, var(--pergaminho), var(--pergaminho-escuro));
@@ -108,7 +107,7 @@ input, select {
   font-size: 1rem;
   padding: 7px 10px;
   border: 1px solid #a8844f;
-  border-radius: 6px;
+  border-radius: 12px;
   background: #fbf3df;
   color: var(--tinta);
   min-width: 0;
@@ -135,7 +134,7 @@ input:focus, select:focus { outline: 2px solid var(--ouro); outline-offset: 1px;
   letter-spacing: .4px;
   padding: 8px 14px;
   border: 1px solid #4a1414;
-  border-radius: 6px;
+  border-radius: 12px;
   color: #fbeed2;
   background: linear-gradient(180deg, var(--vinho-claro), var(--vinho));
   cursor: pointer;
@@ -168,6 +167,7 @@ input:focus, select:focus { outline: 2px solid var(--ouro); outline-offset: 1px;
 .btn-pequeno { padding: 4px 9px; font-size: .78rem; }
 .btn-icone {
   width: 30px; height: 30px; padding: 0;
+  border-radius: 50%;
   display: inline-grid; place-items: center;
   font-size: 1rem;
 }
@@ -199,11 +199,16 @@ input:focus, select:focus { outline: 2px solid var(--ouro); outline-offset: 1px;
   display: flex; flex-wrap: wrap; gap: 12px;
   align-items: center; justify-content: space-between;
   margin: 8px 0 12px;
+  /* Faixa escura atrás do título do grupo, por cima da paisagem */
+  padding: 10px 16px;
+  border-radius: 20px;
+  background: rgba(5, 10, 31, .6);
+  backdrop-filter: blur(4px);
 }
 .titulo-claro { color: var(--ouro-claro); text-shadow: 0 2px 0 #000; margin: 0; }
 .contagem { font-size: .9rem; color: var(--pergaminho-escuro); }
 .controles-combate { display: flex; gap: 8px; flex-wrap: wrap; }
-.dica { color: var(--pergaminho-escuro); font-style: italic; margin: 0 0 12px; min-height: 1.2em; }
+.dica { color: var(--pergaminho-escuro); font-style: italic; margin: 0 0 12px; min-height: 1.2em; text-shadow: 0 1px 3px #000; }
 
 .grade-fichas {
   display: grid;
@@ -217,7 +222,8 @@ input:focus, select:focus { outline: 2px solid var(--ouro); outline-offset: 1px;
   font-style: italic;
   padding: 30px;
   border: 2px dashed rgba(240, 207, 116, .35);
-  border-radius: 10px;
+  border-radius: 20px;
+  background: rgba(5, 10, 31, .45);
 }
 
 /* ---------- Ficha de personagem ---------- */
@@ -225,7 +231,7 @@ input:focus, select:focus { outline: 2px solid var(--ouro); outline-offset: 1px;
   position: relative;
   display: flex; flex-direction: column; gap: 10px;
   padding: 16px 16px 14px;
-  border-radius: 8px;
+  border-radius: 20px;
   background: linear-gradient(180deg, var(--pergaminho), var(--pergaminho-escuro));
   border: 1px solid #b8955c;
   box-shadow: var(--sombra);
@@ -235,7 +241,7 @@ input:focus, select:focus { outline: 2px solid var(--ouro); outline-offset: 1px;
   content: "";
   position: absolute; inset: 5px;
   border: 1px solid rgba(122, 31, 31, .25);
-  border-radius: 5px;
+  border-radius: 15px;
   pointer-events: none;
 }
 .ficha.caido { filter: grayscale(.85); opacity: .8; }
@@ -248,8 +254,8 @@ input:focus, select:focus { outline: 2px solid var(--ouro); outline-offset: 1px;
   flex-shrink: 0;
   font-family: var(--fonte-titulo);
   font-size: .8rem;
-  padding: 3px 8px;
-  border-radius: 4px;
+  padding: 3px 10px;
+  border-radius: 999px;
   background: var(--madeira);
   color: var(--ouro-claro);
 }
@@ -301,7 +307,7 @@ input:focus, select:focus { outline: 2px solid var(--ouro); outline-offset: 1px;
   transform: translate(-50%, 30px);
   max-width: calc(100% - 32px);
   padding: 12px 18px;
-  border-radius: 8px;
+  border-radius: 16px;
   background: var(--madeira-escura);
   color: var(--pergaminho);
   border: 1px solid var(--ouro);
