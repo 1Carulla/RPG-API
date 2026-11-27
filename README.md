@@ -18,8 +18,6 @@ Requisito: Python 3.12 ou mais novo (testado com Python 3.13 e Django 6.1).
 
 Depois acesse http://127.0.0.1:8000/ (página) ou http://127.0.0.1:8000/api/personagens/ (API).
 
-Observação: se o PowerShell bloquear o `venv\Scripts\activate`, rode antes `Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass`.
-
 Testes automáticos: `python manage.py test personagens`
 
 ## Admin
