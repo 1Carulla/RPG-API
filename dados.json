@@ -21,42 +21,42 @@
     "model": "personagens.campanha",
     "pk": 1,
     "fields": {
-      "nome": "A Mina Perdida",
-      "descricao": "Os aventureiros buscam a mina anã esquecida sob as Montanhas Cinzentas."
+      "nome": "A Prova de Redes",
+      "descricao": "Os aventureiros buscam a sabedoria perdida num combate contra Ricardensen."
     }
   },
   {
     "model": "personagens.campanha",
     "pk": 2,
     "fields": {
-      "nome": "As Brumas de Valdoria",
-      "descricao": "Uma névoa amaldiçoada cobre o reino e só um grupo ousado pode dissipá-la."
+      "nome": "Ghigha",
+      "descricao": "Uma névoa amaldiçoada cobre o reino onde o café do continente todo é produzido, e só um grupo ousado pode dissipá-la."
     }
   },
   {
     "model": "personagens.personagem",
     "pk": 1,
     "fields": {
-      "nome": "Aragorn Pedra-Negra",
-      "classe": "Guerreiro",
-      "nivel": 5,
-      "pontos_vida_atual": 40,
-      "pontos_vida_max": 52,
+      "nome": "Thafareal, O justo",
+      "classe": "Paladino",
+      "nivel": 12,
+      "pontos_vida_atual": 142,
+      "pontos_vida_max": 142,
       "vivo": true,
       "iniciativa": null,
       "ordem": 1,
-      "campanha": 1
+      "campanha": 2
     }
   },
   {
     "model": "personagens.personagem",
     "pk": 2,
     "fields": {
-      "nome": "Elara Luzprata",
-      "classe": "Maga",
+      "nome": "Ghustavan",
+      "classe": "Barbaro",
       "nivel": 4,
-      "pontos_vida_atual": 24,
-      "pontos_vida_max": 24,
+      "pontos_vida_atual": 30,
+      "pontos_vida_max": 32,
       "vivo": true,
       "iniciativa": null,
       "ordem": 2,
@@ -67,12 +67,12 @@
     "model": "personagens.personagem",
     "pk": 3,
     "fields": {
-      "nome": "Thorin Barbaférrea",
-      "classe": "Clérigo",
-      "nivel": 3,
-      "pontos_vida_atual": 0,
-      "pontos_vida_max": 27,
-      "vivo": false,
+      "nome": "Heitor Espadafina",
+      "classe": "Ladino",
+      "nivel": 4,
+      "pontos_vida_atual": 18,
+      "pontos_vida_max": 26,
+      "vivo": true,
       "iniciativa": null,
       "ordem": 3,
       "campanha": 1
@@ -82,12 +82,12 @@
     "model": "personagens.personagem",
     "pk": 4,
     "fields": {
-      "nome": "Sombra",
-      "classe": "Ladino",
-      "nivel": 6,
-      "pontos_vida_atual": 31,
-      "pontos_vida_max": 38,
-      "vivo": true,
+      "nome": "Pédrits",
+      "classe": "Mago",
+      "nivel": 4,
+      "pontos_vida_atual": 0,
+      "pontos_vida_max": 24,
+      "vivo": false,
       "iniciativa": null,
       "ordem": 4,
       "campanha": 1
@@ -97,11 +97,11 @@
     "model": "personagens.personagem",
     "pk": 5,
     "fields": {
-      "nome": "Lyra Ventoleve",
-      "classe": "Barda",
-      "nivel": 2,
-      "pontos_vida_atual": 15,
-      "pontos_vida_max": 17,
+      "nome": "Cláudindo",
+      "classe": "Artífice",
+      "nivel": 20,
+      "pontos_vida_atual": 404,
+      "pontos_vida_max": 404,
       "vivo": true,
       "iniciativa": null,
       "ordem": 5,
@@ -112,24 +112,24 @@
     "model": "personagens.personagem",
     "pk": 6,
     "fields": {
-      "nome": "Grom Quebra-Escudo",
-      "classe": "Bárbaro",
-      "nivel": 3,
-      "pontos_vida_atual": 35,
-      "pontos_vida_max": 35,
+      "nome": "Bob, o bobo",
+      "classe": "Bardo",
+      "nivel": 4,
+      "pontos_vida_atual": 20,
+      "pontos_vida_max": 28,
       "vivo": true,
       "iniciativa": null,
       "ordem": 6,
-      "campanha": 2
+      "campanha": 1
     }
   },
   {
     "model": "personagens.personagem",
     "pk": 7,
     "fields": {
-      "nome": "Nim Faíscante",
-      "classe": "Feiticeiro",
-      "nivel": 2,
+      "nome": "Kaijhin Paedo Vergji",
+      "classe": "Druida",
+      "nivel": 4,
       "pontos_vida_atual": 9,
       "pontos_vida_max": 14,
       "vivo": true,
